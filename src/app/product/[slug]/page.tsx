@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 interface Product {
   id: number;
   slug: string;
@@ -16,6 +18,24 @@ interface Product {
     pct: number;
   };
 }
+
+const unitBn: Record<string, string> = {
+  kg: "কেজি",
+  kilogram: "কেজি",
+  liter: "লিটার",
+  litre: "লিটার",
+  piece: "পিস",
+  pieces: "পিস",
+  dozen: "ডজন",
+  maund: "মণ",
+};
+
+const toBanglaNumber = (value: number | string) => {
+  return String(value).replace(
+    /\d/g,
+    (digit) => "০১২৩৪৫৬৭৮৯"[Number(digit)]
+  );
+};
 
 const ProductDetailsPage = async ({
   params,
@@ -44,25 +64,34 @@ const ProductDetailsPage = async ({
   );
 
   if (!product) {
-    return (
-      <main className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-2xl font-bold text-gray-900">
-            পণ্যটি পাওয়া যায়নি
-          </h1>
-        </div>
-      </main>
-    );
+    notFound();
   }
+
+  const unit =
+    unitBn[product.unit?.toLowerCase()] || product.unit;
+
+  const changeIcon =
+    product.change.dir === "up"
+      ? "▲"
+      : product.change.dir === "down"
+        ? "▼"
+        : "—";
+
+  const changeColor =
+    product.change.dir === "up"
+      ? "bg-green-100 text-green-700"
+      : product.change.dir === "down"
+        ? "bg-red-100 text-red-700"
+        : "bg-gray-100 text-gray-600";
 
   return (
     <main className="bg-gray-50 py-10">
       <div className="container mx-auto px-4">
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
           <div className="flex flex-col gap-8 md:flex-row">
 
             {/* Product Image */}
-            <div className="flex h-64 items-center justify-center rounded-2xl bg-green-50 text-8xl md:w-1/2">
+            <div className="flex h-64 w-full items-center justify-center rounded-2xl bg-green-50 text-8xl md:w-1/2">
               {product.image || product.categoryIcon || "🛒"}
             </div>
 
@@ -72,31 +101,34 @@ const ProductDetailsPage = async ({
                 {product.categoryIcon} {product.categoryNameBn}
               </p>
 
-              <h1 className="mt-2 text-3xl font-bold text-gray-900">
+              <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl">
                 {product.nameBn}
               </h1>
 
               <p className="mt-2 text-sm text-gray-500">
-                প্রতি {product.unit}
+                প্রতি {unit}
               </p>
 
+              {/* Today's Price */}
               <div className="mt-6">
                 <p className="text-sm text-gray-500">
                   আজকের দাম
                 </p>
 
-                <p className="mt-1 text-4xl font-bold text-gray-900">
-                  {product.today} টাকা
+                <p className="mt-1 text-3xl font-bold text-gray-900 sm:text-4xl">
+                  {toBanglaNumber(product.today)} টাকা
                 </p>
               </div>
 
+              {/* Price History */}
               <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
                 <div className="rounded-xl bg-gray-50 p-4">
                   <p className="text-xs text-gray-500">
                     গতকাল
                   </p>
+
                   <p className="mt-1 font-bold text-gray-900">
-                    {product.yesterday} টাকা
+                    {toBanglaNumber(product.yesterday)} টাকা
                   </p>
                 </div>
 
@@ -104,8 +136,9 @@ const ProductDetailsPage = async ({
                   <p className="text-xs text-gray-500">
                     গত সপ্তাহ
                   </p>
+
                   <p className="mt-1 font-bold text-gray-900">
-                    {product.lastWeek} টাকা
+                    {toBanglaNumber(product.lastWeek)} টাকা
                   </p>
                 </div>
 
@@ -113,28 +146,20 @@ const ProductDetailsPage = async ({
                   <p className="text-xs text-gray-500">
                     গত মাস
                   </p>
+
                   <p className="mt-1 font-bold text-gray-900">
-                    {product.lastMonth} টাকা
+                    {toBanglaNumber(product.lastMonth)} টাকা
                   </p>
                 </div>
               </div>
 
+              {/* Price Change */}
               <div className="mt-6">
                 <span
-                  className={`inline-flex rounded-full px-4 py-2 text-sm font-semibold ${
-                    product.change.dir === "up"
-                      ? "bg-green-100 text-green-700"
-                      : product.change.dir === "down"
-                        ? "bg-red-100 text-red-700"
-                        : "bg-gray-100 text-gray-600"
-                  }`}
+                  className={`inline-flex rounded-full px-4 py-2 text-sm font-semibold ${changeColor}`}
                 >
-                  {product.change.dir === "up"
-                    ? "▲"
-                    : product.change.dir === "down"
-                      ? "▼"
-                      : "—"}{" "}
-                  {product.change.pct}%
+                  {changeIcon}{" "}
+                  {toBanglaNumber(product.change.pct)}%
                 </span>
               </div>
             </div>
