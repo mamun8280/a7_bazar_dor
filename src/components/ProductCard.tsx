@@ -63,14 +63,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
       href={`/product/${product.slug}`}
       className="block rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
     >
-      {/* Product info */}
       <div className="flex items-center gap-4">
-        {/* Icon */}
+       
         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-green-50 text-4xl">
           {product.image || product.categoryIcon || "🛒"}
         </div>
 
-        {/* Name + Unit */}
+       
         <div className="min-w-0">
           <h3 className="truncate text-lg font-bold text-gray-900">
             {product.nameBn}
@@ -82,7 +81,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
       </div>
 
-      {/* Price */}
+     
       <div className="mt-5 pt-1">
         <p className="text-sm text-gray-500">
           আজকের দাম

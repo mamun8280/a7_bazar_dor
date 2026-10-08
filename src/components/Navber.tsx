@@ -29,7 +29,7 @@ const Navbar = async () => {
           {categories.map((category) => (
             <Link
               key={category.id}
-              href={`/categories/${category.id}`}
+              href={`/category/${category.id}`}
               className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium text-black transition hover:bg-green-700 hover:text-white sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
             >
               <span className="text-sm sm:text-base">
@@ -46,3 +46,4 @@ const Navbar = async () => {
 };
 
 export default Navbar;
+

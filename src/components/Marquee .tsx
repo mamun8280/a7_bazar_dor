@@ -3,9 +3,13 @@ import MarqueeText from "react-marquee-text";
 interface Product {
   id: number;
   nameBn: string;
-  price: number;
   unit: string;
-  icon?: string;
+  image: string;
+  today: number;
+  change: {
+    dir: "up" | "down" | "flat";
+    pct: number;
+  };
 }
 
 const unitBn: Record<string, string> = {
@@ -17,6 +21,13 @@ const unitBn: Record<string, string> = {
   pieces: "পিস",
   dozen: "ডজন",
   maund: "মণ",
+};
+
+const toBanglaNumber = (value: number | string) => {
+  return String(value).replace(
+    /\d/g,
+    (digit) => "০১২৩৪৫৬৭৮৯"[Number(digit)]
+  );
 };
 
 const Marquee = async () => {
@@ -38,51 +49,57 @@ const Marquee = async () => {
   return (
     <div className="border-y border-gray-200 bg-white py-2 text-black">
       <MarqueeText direction="right" duration={30}>
-        {products.map((product, index) => {
-          const change =
-            index % 3 === 0 ? 2.5 : index % 3 === 1 ? -1.8 : 1.2;
-
-          const isUp = change > 0;
-
+        {products.map((product) => {
           const unit =
-            unitBn[product.unit.toLowerCase()] || product.unit;
+            unitBn[product.unit?.toLowerCase()] || product.unit;
+
+          const isUp = product.change.dir === "up";
+          const isDown = product.change.dir === "down";
+
+          const arrow =
+            isUp ? "▲" : isDown ? "▼" : "—";
+
+          const arrowColor =
+            isUp
+              ? "text-green-600"
+              : isDown
+                ? "text-red-600"
+                : "text-gray-500";
 
           return (
             <span
               key={product.id}
               className="mx-5 inline-flex items-center gap-2 whitespace-nowrap text-sm"
             >
-              {/* Emoji */}
-              <span>{product.icon || "🛒"}</span>
+              {/* Product Icon */}
+              <span className="text-2xl">
+                {product.image || "🛒"}
+              </span>
 
-              {/* Name */}
-              <span className="text-2xl text-black">
+              {/* Product Name */}
+              <span className="font-medium text-2xl text-black">
                 {product.nameBn}
               </span>
 
               {/* Price */}
-              <span className="text-2xl text-black">
-                {product.price} টাকা/{unit}
+              <span className="font-semibold text-2xl text-black">
+                {toBanglaNumber(product.today)} টাকা/{unit}
               </span>
 
-              {/* Arrow */}
-              <span
-                className={
-                  isUp
-                    ? "font-bold text-red-600"
-                    : "font-bold text-green-600"
-                }
-              >
-                {isUp ? "▲" : "▼"}
+              {/* Change */}
+              <span className={`font-bold ${arrowColor}`}>
+                {arrow}
               </span>
 
               {/* Percentage */}
-              <span className="text-black">
-                {Math.abs(change)}%
+              <span className="text-black text-2xl">
+                {toBanglaNumber(product.change.pct)}%
               </span>
 
               {/* Separator */}
-              <span className="mx-2 text-gray-600">|</span>
+              <span className="mx-2 text-gray-400">
+                |
+              </span>
             </span>
           );
         })}

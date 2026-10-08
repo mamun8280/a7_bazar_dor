@@ -35,13 +35,13 @@ const ProductSections = async () => {
 
   const products: Product[] = await res.json();
 
-  // Top 6 products whose price increased
+
   const risingProducts = products
     .filter((product) => product.change.dir === "up")
     .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
-  // Top 6 products whose price decreased
+ 
   const fallingProducts = products
     .filter((product) => product.change.dir === "down")
     .sort((a, b) => b.change.pct - a.change.pct)
@@ -51,7 +51,7 @@ const ProductSections = async () => {
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-4">
 
-        {/* Rising */}
+       
         <div className="mb-12">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -73,7 +73,7 @@ const ProductSections = async () => {
           </div>
         </div>
 
-        {/* Falling */}
+       
         <div className="mb-12">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -95,7 +95,7 @@ const ProductSections = async () => {
           </div>
         </div>
 
-        {/* All Products */}
+       
         <div id="সব-পণ্য">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
