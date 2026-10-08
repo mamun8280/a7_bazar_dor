@@ -7,7 +7,7 @@ const Banner = () => {
   });
 
   return (
-    <section className="bg-green-50 py-6">
+    <section className="bg-gray-50 py-6">
       <div className="container mx-auto rounded-2xl bg-white px-4 py-10 shadow-sm md:px-10 md:py-14">
         <div className="grid items-center gap-8 md:grid-cols-2">
           
