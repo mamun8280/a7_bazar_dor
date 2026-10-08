@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navber";
 import Marquee from "@/components/Marquee ";
 
+
 const notoSerifBengali = Noto_Serif_Bengali ({
 
   subsets: ["latin", "bengali"],
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <Navbar />
         <Marquee />
+        
         <main>{children}</main>
 
       </body>
