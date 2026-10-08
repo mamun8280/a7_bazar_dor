@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CategoryNav from "./CategoryNav";
 
 interface Category {
   id: string;
@@ -25,25 +25,10 @@ const Navbar = async () => {
   return (
     <nav className="border-y border-gray-200 bg-white">
       <div className="container mx-auto px-3 sm:px-4">
-        <div className="flex items-center gap-2 overflow-x-auto py-2 sm:py-3">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/category/${category.id}`}
-              className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-medium text-black transition hover:bg-green-700 hover:text-white sm:gap-2 sm:px-4 sm:py-2 sm:text-sm"
-            >
-              <span className="text-sm sm:text-base">
-                {category.icon}
-              </span>
-
-              <span>{category.nameBn}</span>
-            </Link>
-          ))}
-        </div>
+        <CategoryNav categories={categories} />
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-
