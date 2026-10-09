@@ -240,7 +240,7 @@ const SignUpPage = () => {
           </div>
 
           {/* Google Login */}
-          <div className="space-y-3">
+          <div className="flex space-y-3">
             <button
               type="button"
               disabled={loading || Boolean(socialLoading)}
