@@ -32,57 +32,6 @@ BazarDor is a responsive web application that helps users explore everyday essen
 - React Icons
 - Vercel
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-- Node.js
-- npm
-- Git
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone YOUR_GITHUB_REPOSITORY_URL
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd YOUR_PROJECT_FOLDER
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Create a `.env.local` file in the project root and configure the required environment variables:
-
-   ```env
-   BETTER_AUTH_URL=http://localhost:3000
-   BETTER_AUTH_SECRET=your_secret
-   MONGODB_URL=your_mongodb_connection_string
-   GOOGLE_CLIENT_ID=your_google_client_id
-   GOOGLE_CLIENT_SECRET=your_google_client_secret
-   GITHUB_CLIENT_ID=your_github_client_id
-   GITHUB_CLIENT_SECRET=your_github_client_secret
-   ```
-
-   Replace the placeholder values with your own credentials. Never commit `.env.local` or expose your secret keys.
-
-5. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 🔑 Authentication
 
@@ -106,12 +55,6 @@ The interface adapts to different screen sizes:
 ## ⚠️ Price Disclaimer
 
 সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।
-
-## 👨‍💻 Author
-
-**Mamun Sheikh**
-
-GitHub: [Your GitHub Profile](https://github.com/)
 
 ## 📄 License
 
