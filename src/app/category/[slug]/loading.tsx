@@ -27,7 +27,7 @@ const Loading = () => {
     <main className="mt-10 bg-gray-50 py-10">
       <div className="container mx-auto px-4">
 
-        {/* Category Header Skeleton */}
+       
         <div className="mb-8 flex items-center gap-3">
           <div className="h-10 w-10 animate-pulse rounded-full bg-gray-200" />
 
@@ -38,14 +38,14 @@ const Loading = () => {
           </div>
         </div>
 
-        {/* Count + Sort Skeleton */}
+   
         <div className="mb-6 flex flex-col gap-3 min-[400px]:flex-row min-[400px]:items-center min-[400px]:justify-between">
           <div className="h-4 w-28 animate-pulse rounded bg-gray-200" />
 
           <div className="h-10 w-full animate-pulse rounded-lg bg-gray-200 min-[400px]:w-40" />
         </div>
 
-        {/* Products Skeleton */}
+      
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {Array.from({ length: 6 }).map((_, index) => (
             <ProductSkeleton key={index} />

@@ -12,7 +12,7 @@ const SignUpPage = () => {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-  const [socialLoading, setSocialLoading] = useState("");
+  const [socialLoading] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -108,7 +108,7 @@ const handleGithublLogin = async() =>{
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f4f7f1] px-4 py-8">
       <div className="w-full max-w-[400px]">
-        {/* Header */}
+        
         <div className="mb-5 text-center">
           <h1 className="text-2xl font-bold text-gray-900">
             অ্যাকাউন্ট তৈরি করুন
@@ -119,10 +119,10 @@ const handleGithublLogin = async() =>{
           </p>
         </div>
 
-        {/* Signup Card */}
+       
         <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
           <form onSubmit={onSubmit} className="space-y-3.5">
-            {/* Name */}
+          
             <div>
               <label
                 htmlFor="name"
@@ -142,7 +142,7 @@ const handleGithublLogin = async() =>{
               />
             </div>
 
-            {/* Email */}
+         
             <div>
               <label
                 htmlFor="email"
@@ -162,7 +162,7 @@ const handleGithublLogin = async() =>{
               />
             </div>
 
-            {/* Password */}
+         
             <div>
               <label
                 htmlFor="password"
@@ -185,7 +185,7 @@ const handleGithublLogin = async() =>{
               />
             </div>
 
-            {/* Confirm Password */}
+         
             <div>
               <label
                 htmlFor="confirmPassword"
@@ -207,7 +207,7 @@ const handleGithublLogin = async() =>{
               />
             </div>
 
-            {/* Submit */}
+           
             <button
               type="submit"
               disabled={loading || Boolean(socialLoading)}
@@ -219,14 +219,14 @@ const handleGithublLogin = async() =>{
             </button>
           </form>
 
-          {/* Divider */}
+       
           <div className="my-4 flex items-center gap-3">
             <div className="h-px flex-1 bg-gray-200" />
             <span className="text-xs text-gray-400">অথবা</span>
             <div className="h-px flex-1 bg-gray-200" />
           </div>
 
-          {/* Google Login */}
+      
           <div className="flex space-y-3">
             <button
               type="button"
@@ -253,7 +253,7 @@ const handleGithublLogin = async() =>{
             </button>
           </div>
 
-          {/* Sign In Link */}
+       
           <p className="mt-5 text-center text-sm text-gray-600">
             ইতিমধ্যে অ্যাকাউন্ট আছে?
             <Link
@@ -265,7 +265,7 @@ const handleGithublLogin = async() =>{
           </p>
         </div>
 
-        {/* Back Home */}
+       
         <div className="mt-5 text-center">
           <Link
             href="/"

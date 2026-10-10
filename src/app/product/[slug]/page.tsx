@@ -79,7 +79,7 @@ const ProductDetailsPage = async ({
 
   const { slug } = await params;
 
-  // Fetch product data.
+
   const res = await fetch(API_URL, {
     next: { revalidate: 60 },
   });
@@ -107,7 +107,7 @@ const ProductDetailsPage = async ({
   const unit =
     unitBn[product.unit?.toLowerCase()] || product.unit;
 
-  // Price change.
+
   const priceDifference =
     product.today - product.yesterday;
 
@@ -139,7 +139,7 @@ const ProductDetailsPage = async ({
         ? "text-green-600"
         : "text-gray-500";
 
-  // Safely handle missing market data.
+ 
   const markets = Array.isArray(product.markets)
     ? product.markets.filter(
         (market) =>
@@ -199,7 +199,7 @@ const ProductDetailsPage = async ({
           </span>
         </nav>
 
-        {/* Product Summary */}
+      
         <section className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-gray-200/80 bg-white p-6 shadow-sm sm:flex-row sm:items-center">
           <div className="flex min-w-0 items-center gap-4">
             <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-gray-100 bg-gray-50 text-4xl sm:h-20 sm:w-20">
@@ -251,7 +251,7 @@ const ProductDetailsPage = async ({
           </div>
         </section>
 
-        {/* Price Summary */}
+        
         <section>
           <h2 className="mb-3 text-lg font-bold text-gray-900">
             দামের সারসংক্ষেপ
@@ -304,7 +304,7 @@ const ProductDetailsPage = async ({
           </div>
         </section>
 
-        {/* Market-wise Prices */}
+       
         <section className="rounded-2xl border border-gray-200/80 bg-white p-6 shadow-sm">
           <div className="mb-4">
             <h2 className="text-lg font-bold text-gray-900">
@@ -390,7 +390,7 @@ const ProductDetailsPage = async ({
           </div>
         </section>
 
-        {/* Back to products */}
+       
         <div className="pb-4">
           <Link
             href="/#সব-পণ্য"

@@ -48,7 +48,7 @@ const ProductSections = async () => {
   return (
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-4">
-        {/* Rising Products */}
+       
         <div className="mb-12">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -70,7 +70,7 @@ const ProductSections = async () => {
           </div>
         </div>
 
-        {/* Falling Products */}
+       
         <div className="mb-12">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -92,7 +92,7 @@ const ProductSections = async () => {
           </div>
         </div>
 
-        {/* All Products */}
+      
         <div id="সব-পণ্য" className="scroll-mt-40">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import UserInfo from "@/components/Userinfo"; // আপনার প্রজেক্টের পাথ অনুযায়ী ঠিক করে নেবেন
+import UserInfo from "@/components/Userinfo"; 
 
 const Header = () => {
   const date = new Date().toLocaleDateString("bn-BD", {
@@ -12,14 +12,14 @@ const Header = () => {
       <div className="container mx-auto px-4 py-5">
         <div className="flex items-center justify-between gap-4">
           
-          {/* লোগো ও তারিখ */}
+         
           <div className="flex items-center gap-2 sm:gap-3">
             <Link href="/" className="flex items-center gap-2 sm:gap-3">
               <Image
                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 height={40}
                 width={40}
-                src="/logo-icon.png" // আপনার লোগো পাথ
+                src="/logo-icon.png" 
                 alt="বাজার দর লোগো"
               />
               <div>
@@ -33,7 +33,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* ইউজার ইনফো / সাইন-ইন / সাইন-আপ সেকশন */}
+        
           <div>
             <UserInfo />
           </div>

@@ -13,7 +13,7 @@ const SignInPage = () => {
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
-  const [socialLoading, setSocialLoading] = useState("");
+  const [socialLoading] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -93,7 +93,7 @@ const handleGithublLogin = async() =>{
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f4f7f1] px-4 py-8">
       <div className="w-full max-w-[400px]">
-        {/* Header */}
+       
         <div className="mb-5 text-center">
           <h1 className="text-2xl font-bold text-gray-900">
           সাইন ইন
@@ -104,10 +104,10 @@ const handleGithublLogin = async() =>{
           </p>
         </div>
 
-        {/* Sign In Card */}
+      
         <div className="rounded-xl border border-gray-100 bg-white p-5 shadow-sm sm:p-6">
           <form onSubmit={onSubmit} className="space-y-4">
-            {/* Email */}
+           
             <div>
               <label
                 htmlFor="email"
@@ -127,7 +127,7 @@ const handleGithublLogin = async() =>{
               />
             </div>
 
-            {/* Password */}
+          
             <div>
               <div className="mb-1.5 flex items-center justify-between gap-2">
                 <label
@@ -162,7 +162,7 @@ const handleGithublLogin = async() =>{
               </div>
             </div>
 
-            {/* Submit */}
+           
             <button
               type="submit"
               disabled={loading || Boolean(socialLoading)}
@@ -172,14 +172,14 @@ const handleGithublLogin = async() =>{
             </button>
           </form>
 
-          {/* Divider */}
+        
           <div className="my-4 flex items-center gap-3">
             <div className="h-px flex-1 bg-gray-200" />
             <span className="text-xs text-gray-400">অথবা</span>
             <div className="h-px flex-1 bg-gray-200" />
           </div>
 
-          {/* Social Sign In */}
+       
           <div className="flex space-y-3">
             <button
               type="button"
@@ -206,7 +206,7 @@ const handleGithublLogin = async() =>{
             </button>
           </div>
 
-          {/* Sign Up Link */}
+        
           <p className="mt-5 text-center text-sm text-gray-600">
             নতুন এখানে?
             <Link
@@ -218,7 +218,7 @@ const handleGithublLogin = async() =>{
           </p>
         </div>
 
-        {/* Back Home */}
+       
         <div className="mt-5 text-center">
           <Link
             href="/"

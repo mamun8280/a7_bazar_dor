@@ -61,7 +61,7 @@ const UserInfo = () => {
         }
     };
 
-    // বাইরে ক্লিক করলে dropdown বন্ধ হবে
+    
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
@@ -79,7 +79,7 @@ const UserInfo = () => {
         };
     }, []);
 
-    // Session loading
+  
     if (isPending) {
         return (
             <div className="h-10 w-28 animate-pulse rounded-xl bg-gray-100" />
