@@ -19,7 +19,7 @@ const Header = () => {
                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
                 height={40}
                 width={40}
-                src="/logo-index.png" // আপনার লোগো পাথ
+                src="/logo-icon.png" // আপনার লোগো পাথ
                 alt="বাজার দর লোগো"
               />
               <div>

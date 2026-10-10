@@ -7,7 +7,6 @@ import { FiUser } from "react-icons/fi";
 import { LuLogOut } from "react-icons/lu";
 
 const UserInfo = () => {
-    // isPending ebong refetch add kora holo jate session load howar somoy proper state thake
     const { data: session, isPending, refetch } = authClient.useSession();
     const user = session?.user;
     const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +18,7 @@ const UserInfo = () => {
         refetch();
     };
 
-    // Baire click korle dropdown bondho hoye jabe
+    // বাইরে ক্লিক করলে ড্রপডাউন বন্ধ হয়ে যাবে
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -30,34 +29,32 @@ const UserInfo = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Session pending thakle ba load howar somoy jump avoid korar jonno
+    // Session pending থাকলে বা লোড হওয়ার সময় জাম্প এভয়েড করার জন্য
     if (isPending) {
-        return <div className="h-9 w-24 animate-pulse rounded-lg bg-gray-100" />;
+        return <div className="h-10 w-28 animate-pulse rounded-xl bg-gray-100" />;
     }
 
     return (
         <div className="relative flex items-center" ref={dropdownRef}>
             {user ? (
                 <div className="relative">
-                    {/* Trigger Button (Name and Profile Image) */}
+                    
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="flex items-center gap-2 rounded-full py-1.5 px-2 transition hover:bg-gray-100 cursor-pointer"
+                        className="flex items-center gap-2.5 rounded-full py-1.5 px-2 transition hover:bg-gray-100 cursor-pointer"
                     >
-                        <div className="avatar">
-                            <div className="w-9 h-9 rounded-full ring-1 ring-gray-300 overflow-hidden">
-                                <img
-                                    alt={user.name || "User Avatar"}
-                                    src={(user.image as string) || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
+                        <div className="w-10 h-10 rounded-xl overflow-hidden bg-gray-100 border border-gray-200">
+                            <img
+                                alt={user.name || "User Avatar"}
+                                src={(user.image as string) || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}
+                                className="w-full h-full object-cover"
+                            />
                         </div>
-                        <span className="text-sm font-medium text-gray-800">{user.name}</span>
-                        <span className={`text-xs text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`}>▼</span>
+                        <span className="text-base font-semibold text-gray-900">{user.name}</span>
+                        <span className={`text-[10px] text-gray-500 transition-transform ${isOpen ? "rotate-180" : ""}`}>▼</span>
                     </button>
 
-                    {/* Dropdown Menu */}
+                  
                     {isOpen && (
                         <div className="absolute right-0 mt-2 w-64 rounded-2xl border border-gray-100 bg-white p-4 shadow-lg ring-1 ring-black/5 z-50">
                             {/* User Info with exact name & email */}
@@ -66,7 +63,7 @@ const UserInfo = () => {
                                 <p className="text-xs text-gray-500 truncate">{user.email}</p>
                             </div>
 
-                            {/* Menu Options */}
+                        
                             <div className="mt-2 space-y-1">
                                 <Link
                                     href="/profile"
