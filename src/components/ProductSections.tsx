@@ -35,13 +35,11 @@ const ProductSections = async () => {
 
   const products: Product[] = await res.json();
 
-
   const risingProducts = products
     .filter((product) => product.change.dir === "up")
     .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
- 
   const fallingProducts = products
     .filter((product) => product.change.dir === "down")
     .sort((a, b) => b.change.pct - a.change.pct)
@@ -50,8 +48,7 @@ const ProductSections = async () => {
   return (
     <section className="bg-gray-50 py-12">
       <div className="container mx-auto px-4">
-
-       
+        {/* Rising Products */}
         <div className="mb-12">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -63,7 +60,7 @@ const ProductSections = async () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {risingProducts.map((product) => (
               <ProductCard
                 key={product.id}
@@ -73,7 +70,7 @@ const ProductSections = async () => {
           </div>
         </div>
 
-       
+        {/* Falling Products */}
         <div className="mb-12">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -85,7 +82,7 @@ const ProductSections = async () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {fallingProducts.map((product) => (
               <ProductCard
                 key={product.id}
@@ -95,8 +92,8 @@ const ProductSections = async () => {
           </div>
         </div>
 
-       
-        <div id="সব-পণ্য">
+        {/* All Products */}
+        <div id="সব-পণ্য" className="scroll-mt-40">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">
               সব পণ্য
@@ -108,7 +105,7 @@ const ProductSections = async () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
               <ProductCard
                 key={product.id}
@@ -117,7 +114,6 @@ const ProductSections = async () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

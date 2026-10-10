@@ -77,29 +77,18 @@ const SignInPage = () => {
     }
   };
 
-  const handleSocialLogin = async (
-    provider: "google" | "github"
-  ) => {
-    if (loading || socialLoading) return;
+  
 
-    setSocialLoading(provider);
-
-    try {
-      const { error } = await authClient.signIn.social({
-        provider,
-        callbackURL: "/",
-      });
-
-      if (error) {
-        toast.error(error.message || "সোশ্যাল সাইন ইন করা যায়নি");
-        setSocialLoading("");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("সাইন ইন করতে সমস্যা হয়েছে");
-      setSocialLoading("");
-    }
-  };
+  const handleGooglelLogin = async() =>{
+  await authClient.signIn.social({
+    provider: "google",
+  });
+};
+const handleGithublLogin = async() =>{
+   await authClient.signIn.social({
+    provider: "github",
+  });
+};
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#f4f7f1] px-4 py-8">
@@ -195,7 +184,7 @@ const SignInPage = () => {
             <button
               type="button"
               disabled={loading || Boolean(socialLoading)}
-              onClick={() => handleSocialLogin("google")}
+            onClick={handleGooglelLogin}
               className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <FcGoogle size={20} />
@@ -207,7 +196,7 @@ const SignInPage = () => {
             <button
               type="button"
               disabled={loading || Boolean(socialLoading)}
-              onClick={() => handleSocialLogin("github")}
+              onClick={handleGithublLogin}
               className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <FaGithub size={20} />

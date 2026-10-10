@@ -27,9 +27,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
        className={`${notoSerifBengali.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        <Navbar />
-        <Marquee />
+      <div className="sticky top-0 z-50 w-full">
+      <Header />
+      <Navbar />
+      <Marquee />
+    </div>
         
         <main>{children}</main>
         <ToastContainer position="top-right" autoClose={3000} />
